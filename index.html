@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0d10">
+  <meta name="description" content="Personalised aesthetic and skin care in Lahore. Book your consultation at Aster Clinic today.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://your-github-username.github.io/your-repository/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Aster Clinic | Aesthetic & Skin Care in Lahore">
+  <meta property="og:description" content="Personalised aesthetic and skin care in Lahore. Book your consultation at Aster Clinic today.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1600&q=85">
+  <meta property="og:locale" content="en_PK">
+  <title>Aster Clinic | Aesthetic & Skin Care in Lahore</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root { --accent: #e9a96c; --accent-rgb: 233, 169, 108; --accent-dark: #c7844c; --ink: #f8f6f1; --muted: #b4b1ad; --bg: #0b0d10; --line: rgba(255, 255, 255, .12); }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--bg); }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: "DM Sans", Arial, sans-serif; overflow-x: hidden; }
+    button, input, select, textarea { font: inherit; }
+    a { color: inherit; text-decoration: none; }
+    ::selection { color: #101114; background: var(--accent); }
+    .display { font-family: "Playfair Display", Georgia, serif; letter-spacing: -.04em; }
+    .shell { width: min(100% - 2rem, 1120px); margin-inline: auto; }
+    .eyebrow { color: var(--accent); font-size: .7rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+    .section { padding: 5.5rem 0; position: relative; }
+    .section-heading { max-width: 38rem; }
+    .section-heading h2 { margin: .7rem 0 1rem; font-size: clamp(2.15rem, 6vw, 4.2rem); line-height: .98; }
+    .section-heading p { color: var(--muted); font-size: 1rem; line-height: 1.7; margin: 0; }
+    .button { align-items: center; border: 1px solid transparent; cursor: pointer; display: inline-flex; font-size: .9rem; font-weight: 700; gap: .55rem; justify-content: center; letter-spacing: .01em; min-height: 3.25rem; padding: 0 1.15rem; transition: background .25s ease, border-color .25s ease, color .25s ease, transform .25s ease; }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { background: var(--accent); color: #15110d; }
+    .button-primary:hover { background: #f7c28f; }
+    .button-secondary { background: rgba(7, 8, 10, .18); border-color: rgba(255,255,255,.32); color: white; backdrop-filter: blur(10px); }
+    .button-secondary:hover { border-color: var(--accent); color: var(--accent); }
+    .button svg { height: 1rem; width: 1rem; }
+    .skip-link { left: .75rem; position: fixed; top: -5rem; z-index: 100; background: var(--accent); color: #111; font-weight: 700; padding: .7rem; }
+    .skip-link:focus { top: .75rem; }
+    .site-header { position: fixed; top: 0; z-index: 30; width: 100%; transition: background .25s ease, border-color .25s ease; }
+    .site-header.is-scrolled { background: rgba(11, 13, 16, .86); border-bottom: 1px solid var(--line); position: fixed; backdrop-filter: blur(16px); }
+    .nav-wrap { align-items: center; display: flex; height: 4.75rem; justify-content: space-between; }
+    .brand { font-size: 1.12rem; font-weight: 700; letter-spacing: -.04em; line-height: .95; }
+    .brand span { color: var(--accent); display: block; font-size: .65rem; font-weight: 600; letter-spacing: .13em; margin-top: .24rem; text-transform: uppercase; }
+    .nav-links { align-items: center; display: none; gap: 1.6rem; }
+    .nav-links a { color: #e2dfda; font-size: .84rem; font-weight: 600; transition: color .2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta { display: none; }
+    .menu-button { background: transparent; border: 0; color: #fff; cursor: pointer; padding: .5rem; }
+    .menu-button svg { display: block; height: 1.5rem; width: 1.5rem; }
+    .mobile-menu { background: rgba(11, 13, 16, .98); border-bottom: 1px solid var(--line); display: none; left: 0; padding: .5rem 1rem 1.2rem; position: absolute; top: 100%; width: 100%; }
+    .mobile-menu.is-open { display: grid; }
+    .mobile-menu a { border-bottom: 1px solid var(--line); font-size: 1rem; font-weight: 600; padding: .95rem 0; }
+    .hero { align-items: end; background-color: #101216; display: flex; min-height: min(760px, 100svh); overflow: hidden; padding: 7rem 0 3rem; position: relative; }
+    .hero::before { background: linear-gradient(90deg, rgba(9,10,12,.89) 0%, rgba(9,10,12,.62) 48%, rgba(9,10,12,.18) 100%), linear-gradient(0deg, rgba(9,10,12,.65) 0%, transparent 45%); content: ""; inset: 0; position: absolute; z-index: 1; }
+    .hero-image { animation: heroReveal 1.25s cubic-bezier(.2,.75,.2,1) both; background-position: 62% center; background-size: cover; inset: 0; position: absolute; }
+    .hero-content { max-width: 43rem; position: relative; z-index: 2; }
+    .hero h1 { font-size: clamp(3.3rem, 10vw, 6.7rem); line-height: .9; margin: .85rem 0 1.25rem; }
+    .hero-copy { color: #dedbd6; font-size: clamp(1rem, 2.2vw, 1.2rem); line-height: 1.6; margin: 0; max-width: 34rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.8rem; }
+    .intro { border-bottom: 1px solid var(--line); border-top: 1px solid var(--line); color: #e3dfd8; padding: 1.1rem 0; }
+    .intro p { font-size: .84rem; line-height: 1.55; margin: 0; max-width: 48rem; }
+    .intro strong { color: var(--accent); font-weight: 600; }
+    .services-grid { display: grid; gap: 2.25rem; margin-top: 2.7rem; }
+    .service { border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 1rem; padding-bottom: 1.5rem; }
+    .service-image { aspect-ratio: 4 / 3; filter: saturate(.78); object-fit: cover; width: 100%; }
+    .service h3 { font-size: 1.35rem; letter-spacing: -.04em; margin: .2rem 0 .45rem; }
+    .service p { color: var(--muted); font-size: .95rem; line-height: 1.65; margin: 0; }
+    .section-action { margin-top: 2rem; }
+    .gallery-section { background: #121519; overflow: hidden; }
+    .gallery-grid { display: grid; gap: .65rem; margin-top: 2.4rem; }
+    .gallery-item { margin: 0; overflow: hidden; }
+    .gallery-item img { aspect-ratio: 1 / 1.1; display: block; filter: saturate(.78); object-fit: cover; transition: transform .7s ease, filter .5s ease; width: 100%; }
+    .gallery-item:hover img { filter: saturate(1); transform: scale(1.05); }
+    .pricing-grid { display: grid; gap: .85rem; margin-top: 2.5rem; }
+    .pricing-item { background: rgba(255,255,255,.035); border: 1px solid var(--line); display: flex; flex-direction: column; min-height: 15.5rem; padding: 1.45rem; }
+    .pricing-item.is-featured { border-color: rgba(var(--accent-rgb), .75); box-shadow: inset 0 0 0 1px rgba(var(--accent-rgb), .14); }
+    .pricing-label { color: var(--accent); font-size: .66rem; font-weight: 700; letter-spacing: .12em; margin-bottom: .6rem; text-transform: uppercase; }
+    .pricing-item h3 { font-size: 1.4rem; letter-spacing: -.04em; margin: 0; }
+    .price { font-size: 1.5rem; font-weight: 700; letter-spacing: -.04em; margin: 1.25rem 0 .55rem; }
+    .pricing-item p { color: var(--muted); font-size: .9rem; line-height: 1.55; margin: 0; }
+    .testimonials { border-top: 1px solid var(--line); }
+    .testimonial-rail { display: grid; gap: 2.2rem; margin-top: 2.5rem; }
+    .testimonial { border-left: 1px solid var(--accent); padding-left: 1.15rem; }
+    .testimonial blockquote { font-family: "Playfair Display", Georgia, serif; font-size: 1.3rem; letter-spacing: -.025em; line-height: 1.35; margin: 0 0 1rem; }
+    .testimonial cite { color: var(--muted); font-size: .8rem; font-style: normal; }
+    .testimonial cite strong { color: #f0ede9; display: block; font-size: .85rem; margin-bottom: .15rem; }
+    .faq-layout { display: grid; gap: 2.5rem; }
+    .faq-list { border-top: 1px solid var(--line); }
+    .faq-item { border-bottom: 1px solid var(--line); }
+    .faq-question { align-items: center; background: transparent; border: 0; color: #f6f4f1; cursor: pointer; display: flex; font-size: 1rem; font-weight: 600; gap: 1rem; justify-content: space-between; padding: 1.15rem 0; text-align: left; width: 100%; }
+    .faq-icon { color: var(--accent); flex: 0 0 auto; font-size: 1.4rem; font-weight: 400; line-height: 1; transition: transform .25s ease; }
+    .faq-question[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+    .faq-answer { color: var(--muted); display: grid; font-size: .92rem; grid-template-rows: 0fr; line-height: 1.65; transition: grid-template-rows .3s ease; }
+    .faq-answer > div { overflow: hidden; }
+    .faq-answer p { margin: 0; padding-bottom: 0; }
+    .faq-answer.is-open { grid-template-rows: 1fr; }
+    .faq-answer.is-open p { padding-bottom: 1.15rem; }
+    .booking-section { background: radial-gradient(circle at 93% 7%, rgba(var(--accent-rgb), .18), transparent 25rem), #121519; }
+    .booking-layout { display: grid; gap: 2rem; }
+    .booking-info h2 { font-size: clamp(2.4rem, 7vw, 4.6rem); line-height: .95; margin: .7rem 0 1rem; }
+    .booking-info p { color: var(--muted); line-height: 1.7; max-width: 30rem; }
+    .booking-contact { border-top: 1px solid var(--line); margin-top: 1.75rem; padding-top: 1.2rem; }
+    .booking-contact a { color: var(--accent); font-size: 1rem; font-weight: 700; }
+    .lead-form { background: rgba(9, 11, 13, .47); border: 1px solid rgba(255,255,255,.15); padding: 1.25rem; backdrop-filter: blur(14px); }
+    .form-row { display: grid; gap: 1rem; }
+    .field { display: grid; gap: .5rem; margin-bottom: 1rem; }
+    .field label { color: #dfdcd7; font-size: .78rem; font-weight: 700; }
+    .field input, .field select, .field textarea { background: rgba(255,255,255,.055); border: 1px solid rgba(255,255,255,.15); border-radius: 0; color: white; min-height: 3.1rem; outline: none; padding: .75rem .85rem; transition: border-color .2s, background .2s; width: 100%; }
+    .field textarea { min-height: 7rem; resize: vertical; }
+    .field input:focus, .field select:focus, .field textarea:focus { background: rgba(255,255,255,.08); border-color: var(--accent); }
+    .field select option { background: #17191d; }
+    .honeypot { height: 0; left: -10000px; opacity: 0; overflow: hidden; position: absolute; width: 0; }
+    .form-status { font-size: .84rem; line-height: 1.45; margin: .9rem 0 0; min-height: 1.25rem; }
+    .form-status.error { color: #f9aaa1; }
+    .form-status.success { color: #a8d8b8; }
+    .map-section { padding: 0; }
+    .map-frame { border: 0; display: block; filter: grayscale(1) invert(.88) contrast(.85); height: 24rem; width: 100%; }
+    .footer { border-top: 1px solid var(--line); padding: 3rem 0 5.5rem; }
+    .footer-main { display: grid; gap: 2rem; }
+    .footer-heading { color: var(--muted); font-size: .75rem; font-weight: 700; letter-spacing: .11em; margin: 0 0 .75rem; text-transform: uppercase; }
+    .footer p, .footer a { color: #d9d5cf; font-size: .9rem; line-height: 1.7; margin: 0; }
+    .footer a:hover { color: var(--accent); }
+    .social-links { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .footer-bottom { border-top: 1px solid var(--line); color: #85827e; font-size: .78rem; margin-top: 2.4rem; padding-top: 1.25rem; }
+    .float-actions { bottom: 1rem; display: grid; gap: .6rem; position: fixed; right: 1rem; z-index: 25; }
+    .float-button { align-items: center; background: #1eab63; border: 1px solid rgba(255,255,255,.2); border-radius: 50%; box-shadow: 0 8px 24px rgba(0,0,0,.35); display: flex; height: 3.35rem; justify-content: center; transition: transform .2s ease; width: 3.35rem; }
+    .float-button.call { background: var(--accent); color: #15110d; }
+    .float-button:hover { transform: scale(1.07); }
+    .float-button svg { height: 1.35rem; width: 1.35rem; }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.is-visible { opacity: 1; transform: none; }
+    @keyframes heroReveal { from { opacity: 0; transform: scale(1.06); } to { opacity: 1; transform: scale(1); } }
+    @media (min-width: 640px) { .shell { width: min(100% - 3rem, 1120px); } .form-row { grid-template-columns: 1fr 1fr; gap: 1rem; } .gallery-grid { grid-template-columns: repeat(3, 1fr); } .gallery-item:nth-child(2) { margin-top: 2.1rem; } .lead-form { padding: 1.75rem; } }
+    @media (min-width: 800px) { .nav-links, .nav-cta { display: flex; } .menu-button { display: none; } .mobile-menu { display: none !important; } .section { padding: 7rem 0; } .hero { padding-bottom: 5rem; } .services-grid { grid-template-columns: repeat(3, 1fr); gap: 1.35rem; } .service { gap: 1.1rem; } .pricing-grid { grid-template-columns: repeat(3, 1fr); } .testimonial-rail { grid-template-columns: repeat(3, 1fr); gap: 2rem; } .faq-layout { grid-template-columns: .9fr 1.1fr; } .booking-layout { align-items: start; grid-template-columns: .85fr 1.15fr; } .footer-main { grid-template-columns: 1.3fr 1fr 1fr; } .map-frame { height: 30rem; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } .reveal { opacity: 1; transform: none; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="site-header">
+    <nav class="shell nav-wrap" aria-label="Main navigation">
+      <a class="brand" href="#top" data-business-name>Aster Clinic<span data-business-type>Aesthetic & Skin Clinic</span></a>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#results">Our space</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQs</a>
+      </div>
+      <a class="button button-primary nav-cta" href="#book">Book now</a>
+      <button class="menu-button" id="menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </nav>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#services">Services</a><a href="#results">Our space</a><a href="#pricing">Pricing</a><a href="#faq">FAQs</a><a href="#book">Book a consultation</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-heading">
+      <div class="hero-image" id="hero-image" role="img"></div>
+      <div class="shell hero-content">
+        <p class="eyebrow" id="hero-eyebrow">Personalised care in Lahore</p>
+        <h1 class="display" id="hero-heading">A clearer path to skin you feel good in.</h1>
+        <p class="hero-copy" id="hero-copy">Thoughtful consultations, evidence-led treatments, and a result that still looks like you.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#book" id="hero-primary-cta">Book a consultation <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10h11M11 5l5 5-5 5"/></svg></a>
+          <a class="button button-secondary" id="hero-call-cta" href="tel:+923001234567">Call the clinic</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="intro"><div class="shell"><p><strong id="intro-name">Aster Clinic</strong> <span id="intro-copy">is a calm, private space for considered skin and aesthetic care.</span> <span id="intro-hours">Mon-Sat, 10:00 AM-8:00 PM</span></p></div></div>
+
+    <section class="section" id="services" aria-labelledby="services-heading">
+      <div class="shell">
+        <div class="section-heading reveal"><p class="eyebrow" id="services-eyebrow">What we do</p><h2 class="display" id="services-heading">Care that begins with listening.</h2><p id="services-copy">Every recommendation starts with a real conversation about what you want to change, and what you want to keep.</p></div>
+        <div class="services-grid" id="services-grid"></div>
+        <div class="section-action reveal"><a class="button button-primary" id="services-cta" href="#book">Explore your options <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10h11M11 5l5 5-5 5"/></svg></a></div>
+      </div>
+    </section>
+
+    <section class="section gallery-section" id="results" aria-labelledby="gallery-heading">
+      <div class="shell">
+        <div class="section-heading reveal"><p class="eyebrow" id="gallery-eyebrow">The experience</p><h2 class="display" id="gallery-heading">A pause from the pace outside.</h2><p id="gallery-copy">Private appointments, unhurried care, and a space designed to put you at ease.</p></div>
+        <div class="gallery-grid" id="gallery-grid"></div>
+        <div class="section-action reveal"><a class="button button-secondary" id="gallery-cta" href="#book">Visit the clinic</a></div>
+      </div>
+    </section>
+
+    <section class="section" id="pricing" aria-labelledby="pricing-heading">
+      <div class="shell">
+        <div class="section-heading reveal"><p class="eyebrow" id="pricing-eyebrow">Simple starting points</p><h2 class="display" id="pricing-heading">Clear pricing. No pressure.</h2><p id="pricing-copy">Start with the service that suits your goals. We will explain every recommendation before you decide.</p></div>
+        <div class="pricing-grid" id="pricing-grid"></div>
+        <div class="section-action reveal"><a class="button button-primary" id="pricing-cta" href="#book">Choose your appointment <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10h11M11 5l5 5-5 5"/></svg></a></div>
+      </div>
+    </section>
+
+    <section class="section testimonials" aria-labelledby="testimonials-heading">
+      <div class="shell">
+        <div class="section-heading reveal"><p class="eyebrow" id="testimonials-eyebrow">Kind words</p><h2 class="display" id="testimonials-heading">The confidence to come back.</h2></div>
+        <div class="testimonial-rail" id="testimonial-rail"></div>
+        <div class="section-action reveal"><a class="button button-primary" id="testimonials-cta" href="#book">Book your consultation <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10h11M11 5l5 5-5 5"/></svg></a></div>
+      </div>
+    </section>
+
+    <section class="section" id="faq" aria-labelledby="faq-heading">
+      <div class="shell faq-layout">
+        <div class="section-heading reveal"><p class="eyebrow" id="faq-eyebrow">Questions, answered</p><h2 class="display" id="faq-heading">Know what to expect.</h2><p id="faq-copy">If you would rather talk it through, our team is only a call or WhatsApp message away.</p></div>
+        <div><div class="faq-list reveal" id="faq-list"></div><div class="section-action reveal"><a class="button button-primary" id="faq-cta" href="#book">Book with confidence <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10h11M11 5l5 5-5 5"/></svg></a></div></div>
+      </div>
+    </section>
+
+    <section class="section booking-section" id="book" aria-labelledby="booking-heading">
+      <div class="shell booking-layout">
+        <div class="booking-info reveal">
+          <p class="eyebrow" id="booking-eyebrow">Make time for you</p>
+          <h2 class="display" id="booking-heading">Your consultation starts here.</h2>
+          <p id="booking-copy">Send us a few details and our team will confirm the best available appointment time. Prefer a quick chat? Call or message us instead.</p>
+          <div class="booking-contact"><a id="booking-phone" href="tel:+923001234567">+92 300 1234567</a><p id="booking-hours">Mon-Sat, 10:00 AM-8:00 PM</p></div>
+        </div>
+        <form class="lead-form reveal" id="booking-form" novalidate>
+          <div class="form-row"><div class="field"><label for="name">Your name</label><input id="name" name="name" type="text" autocomplete="name" maxlength="100" required></div><div class="field"><label for="phone">Phone / WhatsApp</label><input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="30" placeholder="03XX XXXXXXX" required></div></div>
+          <div class="field"><label for="service">What are you interested in?</label><select id="service" name="service" required><option value="">Choose a service</option></select></div>
+          <div class="field"><label for="message">Anything you would like us to know? <span aria-hidden="true">(optional)</span></label><textarea id="message" name="message" maxlength="1000" placeholder="Tell us a little about your goals"></textarea></div>
+          <div class="honeypot" aria-hidden="true"><label for="company">Leave this field blank</label><input id="company" name="company" type="text" tabindex="-1" autocomplete="off"></div>
+          <button class="button button-primary" id="submit-button" type="submit">Request an appointment <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10h11M11 5l5 5-5 5"/></svg></button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="map-section" aria-label="Clinic location"><iframe class="map-frame" id="map-frame" title="Aster Clinic location" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=MM%20Alam%20Road%2C%20Gulberg%20III%2C%20Lahore&z=15&output=embed"></iframe></section>
+  </main>
+
+  <footer class="footer"><div class="shell"><div class="footer-main"><div><a class="brand" href="#top" data-business-name>Aster Clinic<span data-business-type>Aesthetic & Skin Clinic</span></a><p style="margin-top: .85rem; max-width: 18rem;" id="footer-description">Doctor-led skin and aesthetic care designed around your goals, your schedule, and your comfort.</p></div><div><p class="footer-heading">Find us</p><p id="footer-address">MM Alam Road, Gulberg III, Lahore, Pakistan</p><a id="footer-email" href="mailto:hello@asterclinic.pk">hello@asterclinic.pk</a></div><div><p class="footer-heading">Follow</p><div class="social-links" id="social-links"></div></div></div><div class="footer-bottom"><span id="copyright">Copyright 2026 Aster Clinic. All rights reserved.</span></div></div></footer>
+  <div class="float-actions"><a class="float-button" id="whatsapp-button" href="#" target="_blank" rel="noopener" aria-label="Message us on WhatsApp"><svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.51 2 2.02 6.48 2.02 12c0 1.77.46 3.5 1.34 5.03L2 22l5.12-1.34A10 10 0 0 0 12.04 22C17.56 22 22.05 17.52 22.05 12S17.56 2 12.04 2Zm0 18.16a8.13 8.13 0 0 1-4.15-1.14l-.3-.18-3.04.8.82-2.96-.2-.31A8.1 8.1 0 1 1 12.04 20.16Zm4.46-6.08c-.24-.12-1.43-.7-1.65-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06a6.58 6.58 0 0 1-1.94-1.2 7.24 7.24 0 0 1-1.34-1.67c-.14-.24-.01-.36.1-.47.1-.1.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.4h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.13 3.65.58.25 1.03.4 1.38.5.58.18 1.1.15 1.52.1.46-.07 1.43-.58 1.63-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28Z"/></svg></a><a class="float-button call" id="call-button" href="tel:+923001234567" aria-label="Call us"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.78.65 2.62a2 2 0 0 1-.45 2.11L8.04 9.72a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.84.31 1.72.53 2.62.65A2 2 0 0 1 22 16.92Z"/></svg></a></div>
+
+  <script src="config.js"></script>
+  <script>
+    (() => {
+      const config = window.BUSINESS_CONFIG;
+      if (!config) return;
+      const { business, theme, seo, hero, sections, services, gallery, pricing, testimonials, faqs, socials } = config;
+      const $ = (selector) => document.querySelector(selector);
+      const html = (value) => String(value).replace(/[&<>'"]/g, (char) => `&#${char.charCodeAt(0)};`);
+      document.documentElement.style.setProperty("--accent", theme.accent);
+      document.documentElement.style.setProperty("--accent-rgb", theme.accentRgb);
+      document.documentElement.style.setProperty("--accent-dark", theme.accentDark);
+      document.title = seo.title;
+      document.querySelector('meta[name="description"]').content = seo.description;
+      document.querySelector('link[rel="canonical"]').href = seo.canonicalUrl;
+      document.querySelector('meta[property="og:title"]').content = seo.title;
+      document.querySelector('meta[property="og:description"]').content = seo.description;
+      document.querySelector('meta[property="og:image"]').content = seo.ogImage;
+      const ogUrl = document.createElement("meta"); ogUrl.setAttribute("property", "og:url"); ogUrl.content = seo.canonicalUrl; document.head.appendChild(ogUrl);
+      document.querySelectorAll("[data-business-name]").forEach((node) => { node.childNodes[0].nodeValue = business.name; });
+      document.querySelectorAll("[data-business-type]").forEach((node) => { node.textContent = business.type; });
+      $("#hero-eyebrow").textContent = hero.eyebrow;
+      $("#hero-heading").textContent = hero.headline;
+      $("#hero-copy").textContent = hero.supportingText;
+      $("#hero-primary-cta").childNodes[0].nodeValue = `${hero.primaryCta} `;
+      $("#hero-call-cta").textContent = hero.secondaryCta;
+      $("#hero-call-cta").href = `tel:${business.phone}`;
+      $("#hero-image").style.backgroundImage = `url("${hero.image}")`;
+      $("#hero-image").setAttribute("aria-label", hero.imageAlt);
+      $("#intro-name").textContent = business.name;
+      $("#intro-copy").textContent = sections.intro;
+      $("#intro-hours").textContent = business.hours;
+      $("#booking-phone").textContent = business.displayPhone;
+      $("#booking-phone").href = `tel:${business.phone}`;
+      $("#booking-hours").textContent = business.hours;
+      $("#footer-description").textContent = business.description;
+      $("#footer-address").textContent = business.address;
+      $("#footer-email").textContent = business.email;
+      $("#footer-email").href = `mailto:${business.email}`;
+      $("#copyright").textContent = `Copyright ${new Date().getFullYear()} ${business.name}. All rights reserved.`;
+      $("#map-frame").src = config.mapEmbedUrl;
+      $("#map-frame").title = `${business.name} location`;
+      $("#whatsapp-button").href = `https://wa.me/${business.whatsappNumber}?text=${encodeURIComponent(business.whatsappMessage)}`;
+      $("#call-button").href = `tel:${business.phone}`;
+      const setButtonLabel = (selector, label) => { $(selector).childNodes[0].nodeValue = `${label} `; };
+      $("#services-eyebrow").textContent = sections.services.eyebrow;
+      $("#services-heading").textContent = sections.services.headline;
+      $("#services-copy").textContent = sections.services.supportingText;
+      setButtonLabel("#services-cta", sections.services.cta);
+      $("#gallery-eyebrow").textContent = sections.gallery.eyebrow;
+      $("#gallery-heading").textContent = sections.gallery.headline;
+      $("#gallery-copy").textContent = sections.gallery.supportingText;
+      $("#gallery-cta").textContent = sections.gallery.cta;
+      $("#pricing-eyebrow").textContent = sections.pricing.eyebrow;
+      $("#pricing-heading").textContent = sections.pricing.headline;
+      $("#pricing-copy").textContent = sections.pricing.supportingText;
+      setButtonLabel("#pricing-cta", sections.pricing.cta);
+      $("#testimonials-eyebrow").textContent = sections.testimonials.eyebrow;
+      $("#testimonials-heading").textContent = sections.testimonials.headline;
+      setButtonLabel("#testimonials-cta", sections.testimonials.cta);
+      $("#faq-eyebrow").textContent = sections.faq.eyebrow;
+      $("#faq-heading").textContent = sections.faq.headline;
+      $("#faq-copy").textContent = sections.faq.supportingText;
+      setButtonLabel("#faq-cta", sections.faq.cta);
+      $("#booking-eyebrow").textContent = sections.booking.eyebrow;
+      $("#booking-heading").textContent = sections.booking.headline;
+      $("#booking-copy").textContent = sections.booking.supportingText;
+
+      $("#services-grid").innerHTML = services.map((service) => `<article class="service reveal"><img class="service-image" src="${html(service.image)}" alt="${html(service.alt)}" loading="lazy" width="900" height="675"><div><h3>${html(service.name)}</h3><p>${html(service.description)}</p></div></article>`).join("");
+      $("#gallery-grid").innerHTML = gallery.map((item) => `<figure class="gallery-item reveal"><img src="${html(item.image)}" alt="${html(item.alt)}" loading="lazy" width="1200" height="1320"></figure>`).join("");
+      $("#pricing-grid").innerHTML = pricing.map((item) => `<article class="pricing-item reveal ${item.featured ? "is-featured" : ""}">${item.featured ? '<span class="pricing-label">Most popular</span>' : '<span class="pricing-label">&nbsp;</span>'}<h3>${html(item.name)}</h3><div class="price">${html(item.price)}</div><p>${html(item.detail)}</p></article>`).join("");
+      $("#testimonial-rail").innerHTML = testimonials.map((item) => `<figure class="testimonial reveal"><blockquote>&quot;${html(item.quote)}&quot;</blockquote><figcaption><cite><strong>${html(item.name)}</strong>${html(item.service)}</cite></figcaption></figure>`).join("");
+      $("#faq-list").innerHTML = faqs.map((item, index) => `<article class="faq-item"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-${index}" id="faq-question-${index}"><span>${html(item.question)}</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-answer" id="faq-answer-${index}" role="region" aria-labelledby="faq-question-${index}"><div><p>${html(item.answer)}</p></div></div></article>`).join("");
+      $("#service").insertAdjacentHTML("beforeend", services.map((service) => `<option value="${html(service.name)}">${html(service.name)}</option>`).join("") + pricing.map((item) => `<option value="${html(item.name)}">${html(item.name)}</option>`).join(""));
+      $("#social-links").innerHTML = Object.entries(socials).filter(([, url]) => url).map(([network, url]) => `<a href="${html(url)}" target="_blank" rel="noopener">${html(network)}</a>`).join("");
+
+      const schema = { "@context": "https://schema.org", "@type": ["LocalBusiness", seo.schemaType || "MedicalClinic"], name: business.name, description: business.description, url: seo.canonicalUrl, image: seo.ogImage, telephone: business.phone, email: business.email, address: { "@type": "PostalAddress", streetAddress: business.address, addressLocality: business.city, addressCountry: business.country }, openingHours: seo.schemaOpeningHours || business.hours };
+      const schemaTag = document.createElement("script"); schemaTag.type = "application/ld+json"; schemaTag.textContent = JSON.stringify(schema); document.head.appendChild(schemaTag);
+
+      $("#faq-list").addEventListener("click", (event) => {
+        const button = event.target.closest(".faq-question"); if (!button) return;
+        const answer = document.getElementById(button.getAttribute("aria-controls")); const opening = button.getAttribute("aria-expanded") !== "true";
+        document.querySelectorAll(".faq-question[aria-expanded='true']").forEach((openButton) => { openButton.setAttribute("aria-expanded", "false"); document.getElementById(openButton.getAttribute("aria-controls")).classList.remove("is-open"); });
+        if (opening) { button.setAttribute("aria-expanded", "true"); answer.classList.add("is-open"); }
+      });
+
+      const header = $("#site-header"); const menuButton = $("#menu-button"); const menu = $("#mobile-menu");
+      addEventListener("scroll", () => header.classList.toggle("is-scrolled", scrollY > 28), { passive: true });
+      menuButton.addEventListener("click", () => { const open = menuButton.getAttribute("aria-expanded") !== "true"; menuButton.setAttribute("aria-expanded", String(open)); menu.classList.toggle("is-open", open); });
+      menu.addEventListener("click", (event) => { if (event.target.matches("a")) { menu.classList.remove("is-open"); menuButton.setAttribute("aria-expanded", "false"); } });
+
+      const observer = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add("is-visible"); observer.unobserve(entry.target); } }), { threshold: .12 });
+      document.querySelectorAll(".reveal").forEach((node) => observer.observe(node));
+
+      const form = $("#booking-form"); const status = $("#form-status"); const submitButton = $("#submit-button");
+      const setStatus = (message, type = "") => { status.textContent = message; status.className = `form-status ${type}`; };
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault(); setStatus("");
+        const formData = new FormData(form); const name = formData.get("name").trim(); const phone = formData.get("phone").trim(); const service = formData.get("service"); const message = formData.get("message").trim();
+        if (formData.get("company")) return setStatus("We could not send your request. Please try again.", "error");
+        if (name.length < 2 || !/^[+()\d\s-]{7,30}$/.test(phone) || !service) return setStatus("Please add your name, a valid phone number, and choose a service.", "error");
+        const lastSent = Number(localStorage.getItem("bookingLastSent") || 0);
+        if (Date.now() - lastSent < 60000) return setStatus("Please wait a minute before sending another request.", "error");
+        if (!config.supabase.url.includes("supabase.co") || config.supabase.anonKey.startsWith("YOUR_")) return setStatus("Booking is not connected yet. Please call or WhatsApp us to book.", "error");
+        submitButton.disabled = true; submitButton.textContent = "Sending...";
+        try {
+          const response = await fetch(`${config.supabase.url}/rest/v1/leads`, { method: "POST", headers: { "Content-Type": "application/json", apikey: config.supabase.anonKey, Authorization: `Bearer ${config.supabase.anonKey}`, Prefer: "return=minimal" }, body: JSON.stringify({ name, phone, service, message: message || null }) });
+          if (!response.ok) throw new Error("Lead request failed");
+          localStorage.setItem("bookingLastSent", String(Date.now())); form.reset(); setStatus("Thank you. Your request is with our team and we will be in touch shortly.", "success");
+        } catch (error) { setStatus("We could not send your request right now. Please call or WhatsApp us instead.", "error"); }
+        finally { submitButton.disabled = false; submitButton.innerHTML = 'Request an appointment <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10h11M11 5l5 5-5 5"/></svg>'; }
+      });
+    })();
+  </script>
+</body>
+</html>

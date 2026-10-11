@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0b0d10">
+  <title>Lead Admin</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --accent: #e9a96c; --ink: #f8f6f1; --muted: #aaa8a4; --bg: #0b0d10; --line: rgba(255, 255, 255, .12); }
+    * { box-sizing: border-box; }
+    body { background: radial-gradient(circle at 90% 0%, rgba(233,169,108,.15), transparent 28rem), var(--bg); color: var(--ink); font-family: "DM Sans", Arial, sans-serif; margin: 0; min-height: 100vh; }
+    button, input { font: inherit; } button { cursor: pointer; }
+    .shell { margin: 0 auto; width: min(100% - 2rem, 1100px); }
+    .brand { font-size: 1rem; font-weight: 700; letter-spacing: -.04em; } .brand span { color: var(--accent); display: block; font-size: .63rem; letter-spacing: .12em; margin-top: .2rem; text-transform: uppercase; }
+    .topbar { align-items: center; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; min-height: 4.75rem; }
+    .topbar a { color: var(--muted); font-size: .85rem; text-decoration: none; } .topbar a:hover { color: var(--accent); }
+    .login-wrap { align-items: center; display: flex; justify-content: center; min-height: calc(100vh - 4.75rem); padding: 2rem 0; }
+    .login-box { background: rgba(255,255,255,.035); border: 1px solid var(--line); max-width: 26rem; padding: 1.5rem; width: 100%; }
+    .eyebrow { color: var(--accent); font-size: .68rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+    h1 { font-family: "Playfair Display", Georgia, serif; font-size: clamp(2.2rem, 7vw, 3.2rem); letter-spacing: -.045em; line-height: 1; margin: .7rem 0 .8rem; }
+    .intro { color: var(--muted); font-size: .95rem; line-height: 1.6; margin: 0 0 1.5rem; }
+    .field { display: grid; gap: .45rem; margin-bottom: 1rem; } .field label { color: #e0ddd8; font-size: .78rem; font-weight: 700; } .field input { background: rgba(255,255,255,.055); border: 1px solid rgba(255,255,255,.16); color: white; min-height: 3rem; outline: none; padding: .7rem .8rem; width: 100%; } .field input:focus { border-color: var(--accent); }
+    .button { background: var(--accent); border: 0; color: #17120d; font-size: .86rem; font-weight: 700; min-height: 3rem; padding: 0 1rem; } .button:hover { background: #f7c28f; } .button:disabled { cursor: wait; opacity: .65; } .button-quiet { background: transparent; border: 1px solid var(--line); color: var(--ink); }
+    .status { font-size: .84rem; line-height: 1.5; margin: .85rem 0 0; min-height: 1.25rem; } .status.error { color: #f7aaa1; } .status.success { color: #a8d8b8; }
+    .dashboard { display: none; padding: 3rem 0 5rem; } .dashboard.is-visible { display: block; } .login-wrap.is-hidden { display: none; }
+    .dashboard-header { align-items: end; display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; margin-bottom: 2rem; } .dashboard-header h1 { margin-bottom: 0; } .actions { display: flex; flex-wrap: wrap; gap: .6rem; }
+    .summary { color: var(--muted); font-size: .9rem; margin: .55rem 0 0; }
+    .table-wrap { border: 1px solid var(--line); overflow-x: auto; } table { border-collapse: collapse; min-width: 740px; width: 100%; } th, td { border-bottom: 1px solid var(--line); padding: 1rem; text-align: left; vertical-align: top; } th { background: rgba(255,255,255,.035); color: var(--accent); font-size: .67rem; letter-spacing: .12em; text-transform: uppercase; } td { color: #e3e0db; font-size: .87rem; line-height: 1.5; } tbody tr:last-child td { border-bottom: 0; } td.message { color: var(--muted); max-width: 22rem; white-space: pre-wrap; }
+    .empty { color: var(--muted); padding: 2rem; text-align: center; } .loading { color: var(--muted); padding: 1.2rem; }
+    @media (min-width: 700px) { .shell { width: min(100% - 3rem, 1100px); } .login-box { padding: 2rem; } }
+  </style>
+</head>
+<body>
+  <header class="shell topbar"><div class="brand" id="brand-name">Aster Clinic<span>Lead admin</span></div><a href="index.html">View website</a></header>
+  <main>
+    <section class="shell login-wrap" id="login-view" aria-labelledby="login-heading">
+      <form class="login-box" id="login-form">
+        <p class="eyebrow">Secure access</p><h1 id="login-heading">Lead admin</h1><p class="intro">Sign in with the authorised Supabase email and password to view appointment requests.</p>
+        <div class="field"><label for="email">Email</label><input id="email" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="password">Password</label><input id="password" type="password" autocomplete="current-password" required></div>
+        <button class="button" id="login-button" type="submit">Sign in securely</button><p class="status" id="login-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+    <section class="shell dashboard" id="dashboard" aria-labelledby="leads-heading">
+      <div class="dashboard-header"><div><p class="eyebrow">Appointment requests</p><h1 id="leads-heading">Leads</h1><p class="summary" id="lead-summary">Loading leads...</p></div><div class="actions"><button class="button button-quiet" id="refresh-button" type="button">Refresh</button><button class="button" id="export-button" type="button" disabled>Export CSV</button><button class="button button-quiet" id="logout-button" type="button">Sign out</button></div></div>
+      <div class="table-wrap"><div class="loading" id="table-status">Loading...</div><table id="leads-table" hidden><thead><tr><th>Received</th><th>Name</th><th>Phone</th><th>Service</th><th>Message</th></tr></thead><tbody id="leads-body"></tbody></table></div>
+    </section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script>
+    (() => {
+      const config = window.BUSINESS_CONFIG;
+      const $ = (selector) => document.querySelector(selector);
+      const escapeHtml = (value) => String(value || "").replace(/[&<>'"]/g, (char) => `&#${char.charCodeAt(0)};`);
+      const csvValue = (value) => `"${String(value || "").replace(/"/g, '""')}"`;
+      let client; let leads = [];
+      document.documentElement.style.setProperty("--accent", config.theme.accent);
+      document.title = `${config.business.name} | Lead Admin`;
+      $("#brand-name").childNodes[0].nodeValue = config.business.name;
+
+      const showStatus = (message, type = "") => { const node = $("#login-status"); node.textContent = message; node.className = `status ${type}`; };
+      const formatDate = (value) => new Intl.DateTimeFormat("en-PK", { dateStyle: "medium", timeStyle: "short", timeZone: "Asia/Karachi" }).format(new Date(value));
+      const switchView = (authenticated) => { $("#login-view").classList.toggle("is-hidden", authenticated); $("#dashboard").classList.toggle("is-visible", authenticated); };
+
+      function renderLeads() {
+        const body = $("#leads-body"); const table = $("#leads-table"); const tableStatus = $("#table-status");
+        $("#lead-summary").textContent = `${leads.length} lead${leads.length === 1 ? "" : "s"} received`;
+        $("#export-button").disabled = leads.length === 0;
+        if (!leads.length) { table.hidden = true; tableStatus.hidden = false; tableStatus.className = "empty"; tableStatus.textContent = "No leads have been received yet."; return; }
+        body.innerHTML = leads.map((lead) => `<tr><td>${escapeHtml(formatDate(lead.created_at))}</td><td>${escapeHtml(lead.name)}</td><td><a href="tel:${escapeHtml(lead.phone)}">${escapeHtml(lead.phone)}</a></td><td>${escapeHtml(lead.service)}</td><td class="message">${escapeHtml(lead.message || "-")}</td></tr>`).join("");
+        table.hidden = false; tableStatus.hidden = true;
+      }
+
+      async function loadLeads() {
+        $("#table-status").hidden = false; $("#table-status").className = "loading"; $("#table-status").textContent = "Loading leads..."; $("#leads-table").hidden = true;
+        const { data, error } = await client.from("leads").select("id, name, phone, service, message, created_at").order("created_at", { ascending: false });
+        if (error) { $("#lead-summary").textContent = "Could not load leads"; $("#table-status").className = "empty"; $("#table-status").textContent = `Could not load leads: ${error.message}`; return; }
+        leads = data || []; renderLeads();
+      }
+
+      function exportCsv() {
+        const header = ["received_at", "name", "phone", "service", "message"];
+        const rows = leads.map((lead) => [lead.created_at, lead.name, lead.phone, lead.service, lead.message]);
+        const csv = [header, ...rows].map((row) => row.map(csvValue).join(",")).join("\r\n");
+        const url = URL.createObjectURL(new Blob(["\ufeff", csv], { type: "text/csv;charset=utf-8" }));
+        const link = document.createElement("a"); link.href = url; link.download = `${config.business.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-leads.csv`; link.click(); URL.revokeObjectURL(url);
+      }
+
+      if (!config.supabase.url.includes("supabase.co") || config.supabase.anonKey.startsWith("YOUR_")) { showStatus("Add your Supabase URL and anon key in config.js before using the admin.", "error"); return; }
+      client = window.supabase.createClient(config.supabase.url, config.supabase.anonKey);
+      client.auth.getSession().then(({ data: { session } }) => { switchView(Boolean(session)); if (session) loadLeads(); });
+      client.auth.onAuthStateChange((_event, session) => { switchView(Boolean(session)); if (session) loadLeads(); });
+      $("#login-form").addEventListener("submit", async (event) => { event.preventDefault(); showStatus(""); const button = $("#login-button"); button.disabled = true; button.textContent = "Signing in..."; const { error } = await client.auth.signInWithPassword({ email: $("#email").value.trim(), password: $("#password").value }); if (error) showStatus(error.message, "error"); button.disabled = false; button.textContent = "Sign in securely"; });
+      $("#refresh-button").addEventListener("click", loadLeads);
+      $("#export-button").addEventListener("click", exportCsv);
+      $("#logout-button").addEventListener("click", async () => { await client.auth.signOut(); leads = []; $("#login-form").reset(); showStatus("You have been signed out.", "success"); });
+    })();
+  </script>
+</body>
+</html>
